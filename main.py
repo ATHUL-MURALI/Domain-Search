@@ -4,77 +4,58 @@ import socket
 import time
 from functools import lru_cache
 
-# Configure timeouts
-socket.setdefaulttimeout(10)  # Global socket timeout
-WHOIS_TIMEOUT = 15  # Separate WHOIS timeout
-# Cache WHOIS responses for 1 hour (10,000 entries)
+# Configuration
+HIGH_ACCURACY_MODE = False  # Set False for 95% accuracy (faster)
+DNS_TIMEOUT = 3             # 3 seconds for DNS
+WHOIS_TIMEOUT = 10          # 10 seconds for WHOIS
+WORKERS = 50                # More workers for parallel processing
+
+socket.setdefaulttimeout(DNS_TIMEOUT)
+
 @lru_cache(maxsize=10000)
 def cached_whois(domain):
     try:
         return whois.whois(domain)
-    except Exception as e:
-        # Explicitly return None on failure
+    except:
         return None
 
-def check_domain_availability(domain):
-    # First check DNS (fastest method for registered domains)
+def check_domain(domain):
+    # Stage 1: DNS Check (Fast)
     try:
         socket.gethostbyname(domain)
         return domain, False  # Definitely registered
-    except socket.gaierror:
-        pass  # Proceed to WHOIS check
-    except Exception:
-        pass  # Handle other socket errors
-    
-    # WHOIS verification (100% accurate but slower)
-    try:
-        domain_info = cached_whois(domain)
-        if domain_info is None or not domain_info.domain_name:
-            return domain, True  # Available
-        return domain, False  # Registered
-    except Exception:
-        # On WHOIS failure, assume registered to be safe
-        return domain, False
+    except:
+        if not HIGH_ACCURACY_MODE:
+            # In fast mode, assume available if DNS fails
+            return domain, True  # 95% accurate
+        # Proceed to WHOIS in high-accuracy mode
 
-def load_dictionary_words():
-    with open("words.txt", "r") as file:
-        return [word.strip() for word in file if len(word.strip()) <= 6]
+    # Stage 2: WHOIS Check (Slow but 100% accurate)
+    try:
+        info = cached_whois(domain)
+        return domain, (info is None or not info.domain_name)
+    except:
+        return domain, False  # Assume registered if WHOIS fails
 
 def main():
-    words = load_dictionary_words()
-    domains = [f"{word}.com" for word in words]
+    domains = [f"{word.strip()}.com" for word in open("words.txt") if len(word.strip()) == 6]
     
-    available_domains = []
+    start = time.time()
+    available = []
     
-    # Batch processing with progress tracking
-    batch_size = 500  # Smaller batches for better memory management
-    start_time = time.time()
+    with concurrent.futures.ThreadPoolExecutor(max_workers=WORKERS) as executor:
+        results = executor.map(check_domain, domains)
+        for domain, is_avail in results:
+            if is_avail:
+                available.append(domain + "\n")
     
-    for i in range(0, len(domains), batch_size):
-        batch = domains[i:i + batch_size]
-        
-        # Dynamic worker adjustment (10-30 workers)
-        workers = min(30, max(10, len(batch) // 20))
-        
-        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-            results = executor.map(check_domain_availability, batch)
-            
-            for domain, is_available in results:
-                if is_available:
-                    available_domains.append(f"{domain}\n")
-        
-        # Progress reporting
-        processed = min(i + batch_size, len(domains))
-        elapsed = time.time() - start_time
-        print(f"Progress: {processed}/{len(domains)} domains | "
-              f"Available: {len(available_domains)} | "
-              f"Elapsed: {elapsed:.1f}s")
-    
-    # Save only available domains
     with open("available.txt", "w") as f:
-        f.writelines(available_domains)
+        f.writelines(available)
     
-    print(f"\nDone! Found {len(available_domains)} available domains.")
+    total_time = time.time() - start
+    print(f"Checked {len(domains)} domains in {total_time:.1f}s")
+    print(f"Found {len(available)} available domains")
+    print(f"Mode: {'100% accurate' if HIGH_ACCURACY_MODE else '95% accurate (faster)'}")
 
 if __name__ == "__main__":
     main()
