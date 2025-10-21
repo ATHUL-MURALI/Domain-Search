@@ -8,7 +8,7 @@ nltk.download("words")
 filtered_words = sorted([word.lower() for word in words.words() if len(word) <= 7], key=len)
 
 # Save to words.txt
-with open("words.txt", "w") as file:
+with open("dict.txt", "w") as file:
     file.write("\n".join(filtered_words))
 
 print("words.txt has been generated with words sorted by length (1 to 7 letters).")
