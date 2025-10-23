@@ -1,16 +1,78 @@
 # 🌐 Domain Name Availability Checker
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![NLTK](https://img.shields.io/badge/NLTK-WordNet-yellow)](https://www.nltk.org/)
+[](https://www.python.org/)
+[](https://www.google.com/search?q=LICENSE)
+[](https://www.nltk.org/)
 
-A Python-based project that **generates, checks, and processes domain names** to find available ones and extract their meanings.  
-It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based meaning extraction.
+A Python tool to generate, check, and find the meanings of available `.com` domain names. It combines multithreaded DNS/WHOIS lookups with NLTK (WordNet) for meaning extraction.
 
+## 🧠 Features
+
+  * ✅ Fast **DNS-based pre-scan** to quickly filter unavailable domains.
+  * 🔍 Accurate **WHOIS verification** for final availability checks.
+  * 💬 Meaning extraction for available domains using **NLTK WordNet**.
+  * ⚡ **Multithreaded** for faster checking of large wordlists.
+  * 🔡 Includes generators for both **4-letter combinations** and **real English words**.
+
+## 🚀 Workflow & Usage
+
+Follow these steps to find available domains and their meanings.
+
+### 1️⃣ Installation
+
+Clone the repository and install the required Python packages:
+
+```bash
+pip install python-whois nltk
+```
+
+### 2️⃣ Step 1: Generate a Wordlist
+
+You can generate a wordlist to check. Choose one of the following options:
+
+**Option A: Generate all 4-letter word combinations**
+
+```bash
+python Data/wordsGen.py
+```
+
+  * **Output:** `Data/words.txt`
+
+**Option B: Generate a dictionary of valid English words**
+
+```bash
+python Data/dictGen.py
+```
+
+  * **Output:** `Data/dict.txt`
+
+### 3️⃣ Step 2: Run the Domain Checker
+
+Run `main.py` to check the availability of domains from your generated wordlist.
+
+*(Note: You may need to edit `main.py` to point to your desired input file, e.g., `Data/words.txt` or `Data/dict.txt`)*
+
+```bash
+python main.py
+```
+
+  * **Output:** `resultDomains.txt` (contains a list of available domains)
+
+### 4️⃣ Step 3: Extract Meanings
+
+Once you have a list of available domains, run `meaning.py` to fetch their definitions. This script reads `resultDomains.txt` and uses WordNet.
+
+```bash
+python CustomProcessing/meaning.py
+```
+
+  * **Output:** `CustomProcessing/meaning.txt` (contains available domains with their meanings)
+
+-----
 
 ## 📁 Project Structure
 
-
+```
 .
 ├── CustomProcessing/
 │   ├── meaning.py         # Extracts meanings of verified domain words
@@ -20,96 +82,29 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 │   ├── dictGen.py         # Generates a dictionary (valid English words)
 │   ├── dict.txt           # List of English words
 │   ├── wordsGen.py        # Generates 4-letter word combinations
-│   ├── words.txt          # Output file containing all generated words
+│   └── words.txt          # Output file containing all generated words
 │
 ├── main.py                # Runs DNS + WHOIS domain availability check
-├── .gitignore             # Git ignore file
-├── .gitattributes         # Git text settings
-└── README.md              # Project documentation
-
-
----
-
-## ⚙️ How It Works
-
-1. **Generate Words** → Create possible domain name words using `wordsGen.py`  
-2. **Generate Dictionary** → Build a dictionary of real words using `dictGen.py`  
-3. **Check Domain Availability** → Run `main.py` to find available `.com` domains  
-4. **Get Meanings** → Use `meaning.py` to fetch definitions of available domains  
-
-
-## 🚀 Usage
-
-### 1️⃣ Generate Word List
-bash
-python Data/wordsGen.py
-
-
-### 2️⃣ Generate Dictionary
-
-bash
-python Data/dictGen.py
-
-
-### 3️⃣ Run Domain Checker
-
-bash
-python main.py
-
-
-**Output:** `resultDomains.txt` (contains available domains)
-
-### 4️⃣ Extract Meanings
-
-bash
-python CustomProcessing/meaning.py
-
-
-**Output:** `meaning.txt` (domain with meaning)
-
----
-
-## 📦 Requirements
-
-* Python 3.8+
-* Install dependencies:
-
-  bash
-  pip install python-whois nltk
-  
-
----
-
-## 🧠 Features
-
-* ✅ Fast **DNS-based pre-scan**
-* 🔍 Accurate **WHOIS verification**
-* 💬 Meaning extraction using **WordNet**
-* ⚡ Multithreaded for better performance
-
----
+├── .gitignore
+├── .gitattributes
+└── README.md
+```
 
 ## 📜 Output Files
 
-| File                | Description                  |
-| ------------------- | ---------------------------- |
-| `words.txt`         | Generated word combinations  |
-| `dict.txt`          | English word dictionary      |
-| `resultDomains.txt` | Available domain names       |
-| `meaning.txt`       | Meanings of verified domains |
+| File | Description |
+| :--- | :--- |
+| `Data/words.txt` | Generated 4-letter word combinations |
+| `Data/dict.txt` | Generated English word dictionary |
+| `resultDomains.txt` | List of available domain names |
+| `CustomProcessing/meaning.txt` | Meanings of the available domains |
 
----
+-----
 
 ## 👨‍💻 Author
 
 **Athul Murali T**
+<br>
 Computer Science Engineer | MERN & ML Enthusiast
+<br>
 📧 *[athul.t.murali@gmail.com](mailto:athul.t.murali@gmail.com)*
-
-
----
-
-✅ **Instructions:**  
-1. Copy everything above.  
-2. Paste it into your `README.md` file in your GitHub repo.  
-3. Save → Commit → Refresh your repo — it’ll render beautifully.
