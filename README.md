@@ -1,4 +1,3 @@
-```
 # 🌐 Domain Name Availability Checker
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
@@ -12,7 +11,6 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 
 ## 📁 Project Structure
 
-```
 
 .
 ├── CustomProcessing/
@@ -31,7 +29,6 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 ├── README.md              # Project documentation
 └── resultDomains.txt      # Output
 
-````
 
 ---
 
@@ -112,5 +109,4 @@ python CustomProcessing/meaning.py
 Computer Science Engineer 
 📧 *[athul.t.murali@gmail.com](mailto:athul.t.murali@gmail.com)*
 
-```
 
