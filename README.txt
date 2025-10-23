@@ -114,10 +114,3 @@ Computer Science Engineer
 
 ```
 
----
-
-✅ **Instructions:**  
-1. Copy everything above.  
-2. Paste it into your `README.md` file in your GitHub repo.  
-3. Save → Commit → Refresh your repo — it’ll render beautifully.
-```
