@@ -11,7 +11,6 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 
 ## 📁 Project Structure
 
-```
 .
 ├── CustomProcessing/
 │   ├── meaning.py         # Extracts meanings of verified domain words
@@ -27,7 +26,6 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 ├── .gitignore             # Git ignore file
 ├── .gitattributes         # Git text settings
 └── README.md              # Project documentation
-```
 
 ---
 
