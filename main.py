@@ -12,7 +12,7 @@ PHASE2_WORKERS = 20   # Conservative WHOIS workers (reduced for reliability)
 DNS_TIMEOUT = 2       # 2 seconds for DNS
 WHOIS_TIMEOUT = 15    # Increased timeout for WHOIS
 
-INPUT_FILE = "Data/dict.txt"
+INPUT_FILE = "Data/words.txt"
 OUTPUT_FILE = "resultDomains.txt"
 WHOIS_RETRIES = 3     # Number of retries for WHOIS lookups
 
