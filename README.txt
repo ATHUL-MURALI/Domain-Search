@@ -41,29 +41,29 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 ## 🚀 Usage
 
 ### 1️⃣ Generate Word List
-```bash
+bash
 python Data/wordsGen.py
-````
+
 
 ### 2️⃣ Generate Dictionary
 
-```bash
+bash
 python Data/dictGen.py
-```
+
 
 ### 3️⃣ Run Domain Checker
 
-```bash
+bash
 python main.py
-```
+
 
 **Output:** `resultDomains.txt` (contains available domains)
 
 ### 4️⃣ Extract Meanings
 
-```bash
+bash
 python CustomProcessing/meaning.py
-```
+
 
 **Output:** `meaning.txt` (domain with meaning)
 
@@ -74,9 +74,9 @@ python CustomProcessing/meaning.py
 * Python 3.8+
 * Install dependencies:
 
-  ```bash
+  bash
   pip install python-whois nltk
-  ```
+  
 
 ---
 
