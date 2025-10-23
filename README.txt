@@ -1,3 +1,4 @@
+```
 # 🌐 Domain Name Availability Checker
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
@@ -10,6 +11,8 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 ---
 
 ## 📁 Project Structure
+
+```
 
 .
 ├── CustomProcessing/
@@ -27,6 +30,8 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 ├── .gitattributes         # Git text settings
 └── README.md              # Project documentation
 
+````
+
 ---
 
 ## ⚙️ How It Works
@@ -43,31 +48,37 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 ### 1️⃣ Generate Word List
 ```bash
 python Data/wordsGen.py
-```
+````
 
 ### 2️⃣ Generate Dictionary
+
 ```bash
 python Data/dictGen.py
 ```
 
 ### 3️⃣ Run Domain Checker
+
 ```bash
 python main.py
 ```
+
 **Output:** `resultDomains.txt` (contains available domains)
 
 ### 4️⃣ Extract Meanings
+
 ```bash
 python CustomProcessing/meaning.py
 ```
+
 **Output:** `meaning.txt` (domain with meaning)
 
 ---
 
 ## 📦 Requirements
 
-- Python 3.8+
-- Install dependencies:
+* Python 3.8+
+* Install dependencies:
+
   ```bash
   pip install python-whois nltk
   ```
@@ -76,28 +87,36 @@ python CustomProcessing/meaning.py
 
 ## 🧠 Features
 
-- ✅ Fast **DNS-based pre-scan**  
-- 🔍 Accurate **WHOIS verification**  
-- 💬 Meaning extraction using **WordNet**  
-- ⚡ Multithreaded for better performance  
+* ✅ Fast **DNS-based pre-scan**
+* 🔍 Accurate **WHOIS verification**
+* 💬 Meaning extraction using **WordNet**
+* ⚡ Multithreaded for better performance
 
 ---
 
 ## 📜 Output Files
 
-| File | Description |
-|------|--------------|
-| `words.txt` | Generated word combinations |
-| `dict.txt` | English word dictionary |
-| `resultDomains.txt` | Available domain names |
-| `meaning.txt` | Meanings of verified domains |
+| File                | Description                  |
+| ------------------- | ---------------------------- |
+| `words.txt`         | Generated word combinations  |
+| `dict.txt`          | English word dictionary      |
+| `resultDomains.txt` | Available domain names       |
+| `meaning.txt`       | Meanings of verified domains |
 
 ---
 
 ## 👨‍💻 Author
-**Athul Murali T**  
-Computer Science Engineer | MERN & ML Enthusiast  
-📧 *athul.t.murali@gmail.com*
+
+**Athul Murali T**
+Computer Science Engineer | MERN & ML Enthusiast
+📧 *[athul.t.murali@gmail.com](mailto:athul.t.murali@gmail.com)*
+
+```
 
 ---
 
+✅ **Instructions:**  
+1. Copy everything above.  
+2. Paste it into your `README.md` file in your GitHub repo.  
+3. Save → Commit → Refresh your repo — it’ll render beautifully.
+```
