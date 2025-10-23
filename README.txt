@@ -1,4 +1,3 @@
-```
 # 🌐 Domain Name Availability Checker
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
@@ -8,11 +7,9 @@
 A Python-based project that **generates, checks, and processes domain names** to find available ones and extract their meanings.  
 It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based meaning extraction.
 
----
 
 ## 📁 Project Structure
 
-```
 
 .
 ├── CustomProcessing/
@@ -30,7 +27,6 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 ├── .gitattributes         # Git text settings
 └── README.md              # Project documentation
 
-````
 
 ---
 
@@ -41,7 +37,6 @@ It combines **DNS lookups**, **WHOIS verification**, and **NLP (WordNet)**-based
 3. **Check Domain Availability** → Run `main.py` to find available `.com` domains  
 4. **Get Meanings** → Use `meaning.py` to fetch definitions of available domains  
 
----
 
 ## 🚀 Usage
 
@@ -111,7 +106,6 @@ python CustomProcessing/meaning.py
 Computer Science Engineer | MERN & ML Enthusiast
 📧 *[athul.t.murali@gmail.com](mailto:athul.t.murali@gmail.com)*
 
-```
 
 ---
 
@@ -119,4 +113,3 @@ Computer Science Engineer | MERN & ML Enthusiast
 1. Copy everything above.  
 2. Paste it into your `README.md` file in your GitHub repo.  
 3. Save → Commit → Refresh your repo — it’ll render beautifully.
-```
