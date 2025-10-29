@@ -7,7 +7,7 @@ n = 4
 letters = string.ascii_lowercase
 
 # Generate all possible 4-letter combinations
-combinations = itertools.product(letters, repeat=4)
+combinations = itertools.product(letters, repeat=n)
 
 # Write them to words.txt
 with open("words.txt", "w") as f:
